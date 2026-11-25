@@ -5,7 +5,7 @@
   "latest_version": "2.0.",
   "latest_version_code": 2,
   "download_url": "https://github.com/ChitLay118/NOVAKEY-android-keyboard/releases/download/versions-2.0/NOVAKEY-MYANMAR.Keyboard-v2.apk",
-  "force_update": false,
+  "force_update": true,
   "update_title": "NOVAKEY Update",
   "update_message": "NOVAKEY version အသစ်ထွက်ရှိပါပြီ။",
   "release_notes": [

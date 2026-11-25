@@ -2,16 +2,18 @@
 {
   "app_name": "NOVAKEY",
   "package_name": "com.novanex.novakey",
-  "latest_version": "1.0.",
-  "latest_version_code": 1,
-  "download_url": "https://github.com/USERNAME/REPO/releases/download/v2.0.0/NOVAKEY.apk",
+  "latest_version": "2.0.",
+  "latest_version_code": 2,
+  "download_url": "https://github.com/ChitLay118/NOVAKEY-android-keyboard/releases/download/versions-2.0/NOVAKEY-MYANMAR.Keyboard-v2.apk",
   "force_update": false,
   "update_title": "NOVAKEY Update",
   "update_message": "NOVAKEY version အသစ်ထွက်ရှိပါပြီ။",
   "release_notes": [
     "Keyboard performance ပိုကောင်းလာပါပြီခင်ဗျာ",
     "Bug fixes",
-    "UI improvements"
+    "UI improvements",
+    "Voice Keyboardနဲ့လဲတွဲသုံးနိုင်ပါသည်",
+    "Voice keyboardသုံးရန် settings ထဲဝင်ဒေါင်းလုပ်ဆွဲပေးရန်လိုအပ်ပြီး အသံအတွက် ခွင့်ပြုချက်ပေးရမည် ဖြစ်ပါသည်။"
   ],
   "telegram_contact": "https://t.me/waiyanfelix",
   "telegram_channel": "https://t.me/+-EuNt7sR9hdkYWJl"

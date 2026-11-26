@@ -2,9 +2,9 @@
 {
   "app_name": "NOVAKEYLite",
   "package_name": "com.novanex.novakeylite",
-  "latest_version": "2.0.",
-  "latest_version_code": 2,
-  "download_url": "https://github.com/ChitLay118/NOVAKEY-android-keyboard/releases/download/Version-2.0-stable/Novakey-stable.version2.0.apk",
+  "latest_version": "1.0.",
+  "latest_version_code": 1,
+  "download_url": "",
   "force_update": true,
   "update_title": "NOVAKEYLite Update",
   "update_message": "NOVAKEYLite version အသစ်ထွက်ရှိပါပြီ။",

@@ -1,0 +1,24 @@
+Refactor this existing keyboard project into a lightweight, universally compatible **"NOVAKEY Lite"** edition (`com.novanex.novakeylite`) that installs cleanly on ALL Android versions (from Android 5.0 Lollipop up to Android 16) and runs smoothly on low-RAM / 32-bit devices with ZERO Package Installer crashes:
+
+### 1. Rebrand to NOVAKEY Lite (No Conflict with Full Version)
+- Change `applicationId` to `"com.novanex.novakeylite"` in `app/build.gradle.kts` (and update `namespace` or any hardcoded `"com.novanex.novakey"` package strings, `FileProvider` authorities, and IME service references so both apps can coexist on the same device).
+- Set `versionCode = 1` and `versionName = "1.0.0-lite"`.
+- Update `app_name` in `res/values/strings.xml` (and all locale string files) and `android:label` in `AndroidManifest.xml` to `"NOVAKEY Lite"`.
+
+### 2. Zero Package Installer Crash & Maximum OS Compatibility
+- In `gradle.properties`:
+  - Add `android.enableResourceOptimizations=false` (prevents AGP 8+ sparse `resources.arsc` encoding that crashes Android 10/11 vendor package installers like Tecno HiOS).
+- In `app/build.gradle.kts` and `gradle/libs.versions.toml`:
+  - Set `minSdk = 21` (or `23` only if strictly required by a core UI library), `compileSdk = 34`, and `targetSdk = 34`.
+  - Downgrade any AndroidX/Compose dependencies that require `compileSdk = 35` or `36` so everything compiles cleanly with SDK 34.
+  - Enable both `enableV1Signing = true` and `enableV2Signing = true` inside `signingConfigs` for both `debugConfig` and `release` so legacy Android 5–11 (`V1`) and modern Android 12–16 (`V2`) verify the APK without errors.
+- Fix Launcher Icons & Resources for Legacy Package Installers:
+  - Remove any Android 13+ `<monochrome>` tags from `mipmap-anydpi-v26/ic_launcher.xml` and `ic_launcher_round.xml`.
+  - Ensure clean, standard PNG `ic_launcher.png` and `ic_launcher_round.png` exist in `mipmap-mdpi` through `mipmap-xxxhdpi`, and ensure no oversized uncompressed images exist in `res/drawable/`.
+- In `AndroidManifest.xml`:
+  - Explicitly set `android:exported="true"` or `"false"` on every `<activity>`, `<service>`, `<receiver>`, and `<provider>`.
+
+### 3. True "Lite" Architecture (Small APK & Ultra-Low RAM Stability)
+- Remove the heavy `onnxruntime-android` native dependency and remove the 366 MB / 84 MB Nara SAR offline model downloader/inference engine so the APK stays ultra-light (~8–15 MB) and never causes `OutOfMemoryError` on 32-bit or 2 GB RAM devices.
+- Replace the heavy offline ONNX voice engine with a lightweight, zero-bloat voice typing handler using Android's built-in `SpeechRecognizer` / `RecognizerIntent.ACTION_RECOGNIZE_SPEECH` (wrapped in `try { ... } catch (t: Throwable)` so if a device has no speech recognition service installed, it shows a friendly toast instead of crashing).
+- Keep all core keyboard features fast, responsive, and intact: Myanmar (Unicode/Zawgyi) and English layouts, fast language switching, lightweight themes, symbols, emojis, clipboard/text tools, and keypress sound/vibration—optimized for minimal memory footprint.
